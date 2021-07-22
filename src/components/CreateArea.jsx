@@ -1,0 +1,45 @@
+import React from "react";
+
+function CreateArea({ dispatch, title, content }) {
+  function handleSubmit(e) {
+    dispatch({ type: "submit" });
+    e.preventDefault();
+  }
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          name="title"
+          placeholder="Title"
+          value={title}
+          onChange={(e) =>
+            dispatch({ type: "field", field: "title", value: e.target.value })
+          }
+        />
+        <textarea
+          name="content"
+          placeholder="Take a note..."
+          value={content}
+          rows="3"
+          onChange={(e) =>
+            dispatch({ type: "field", field: "content", value: e.target.value })
+          }
+        />
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-lg"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default CreateArea;
